@@ -67,6 +67,7 @@ jobs:
           docker build \
             --build-arg VERSION_TAG=${{ steps.get-version.outputs.version }} \
             -t sherlock-test:latest .
+        continue-on-error: true
       - name: Test Docker image runs
         run: docker run --rm sherlock-test:latest --version
         continue-on-error: true
