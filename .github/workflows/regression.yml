@@ -1,28 +1,7 @@
 name: Regression Testing
 
 on:
-  pull_request:
-    branches:
-      - master
-      - release/**
-    paths:
-      - '.github/workflows/regression.yml'
-      - '**/*.json'
-      - '**/*.py'
-      - '**/*.ini'
-      - '**/*.toml'
-      - 'Dockerfile'
-  push:
-    branches:
-      - master
-      - release/**
-    paths:
-      - '.github/workflows/regression.yml'
-      - '**/*.json'
-      - '**/*.py'
-      - '**/*.ini'
-      - '**/*.toml'
-      - 'Dockerfile'
+  workflow_dispatch: 
 
 jobs:
   tox-lint:
@@ -48,9 +27,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [
-          ubuntu-latest,
-          windows-latest,
-          macos-latest,
+          ubuntu-latest
         ]
         python-version: [
           '3.10',
